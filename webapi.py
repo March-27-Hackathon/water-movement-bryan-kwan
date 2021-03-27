@@ -10,12 +10,12 @@ parser = reqparse.RequestParser()
 parser.add_argument("msg", type = str, help = '''needs a message''', required=True)
 
 
-me
-
-
-def abort_msg_doesnt_exist(msg_id):ssages = {'1': {'msg': 'hello world'}, 
+messages = {'1': {'msg': 'hello world'}, 
 '2': {'msg': 'spaghettify'},
 }
+
+
+def abort_msg_doesnt_exist(msg_id):
     if msg_id not in messages:
         abort(404, message="Message {} doesn't exist".format(msg_id))
 
