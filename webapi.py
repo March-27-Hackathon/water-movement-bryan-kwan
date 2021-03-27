@@ -11,7 +11,7 @@ parser.add_argument("msg", type = str, help = '''needs a message''', required=Tr
 
 
 messages = {'1': {'msg': 'hello world'}, 
-'2': {'msg': 'spaghettify'}
+'2': {'msg': 'spaghettify'},
 }
 
 
@@ -51,7 +51,7 @@ class MessageBoard(Resource):
 
 #add to the default directory
 api.add_resource(Message, "/messageboard/<string:msg_id>")
-api.add_resource(MessageBoard, '/', "/messageboard")
+api.add_resource(MessageBoard, '/', "/messageboard/", "/messageboard")
 
 
 if __name__ == "__main__":
