@@ -9,6 +9,8 @@ class MessageManager():
         return response
 
     def put(self, message):
-        put(self.url, data={'msg':message})
+        msg_id = len(self.get().json()) + 1
+        url = self.url + str(msg_id)
+        put(url, data={'msg':message})
         return message
 

@@ -7,7 +7,7 @@ api = Api(app)
 
 #parse requests
 parser = reqparse.RequestParser()
-parser.add_argument("msg", type = str, help = '''needs a message''', required=True)
+parser.add_argument("msg")
 
 
 messages = {'1': {'msg': 'hello world'}, 
@@ -19,7 +19,7 @@ def abort_msg_doesnt_exist(msg_id):
     if msg_id not in messages:
         abort(404, message="Message {} doesn't exist".format(msg_id))
 
-
+#single message
 class Message(Resource):
 
     def get(self, msg_id):
@@ -43,7 +43,7 @@ class MessageBoard(Resource):
         return messages
     def post(self):
         args = parser.parse_args()
-        msg_id = int(max(messages.keys()) + 1)
+        msg_id = len(messages) + 1
         messages[msg_id] = {'msg': args['msg']}
         return messages[msg_id]
 
